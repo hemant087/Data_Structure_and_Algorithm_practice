@@ -24,15 +24,36 @@ int main()
     }
 
     int maxSum = INT_MIN;
-    for (int x = 0; x < size; x++)
+
+    // brute force approach ,,,,,,,,,,,,,,time comp=O[n^3]
+    // for (int x = 0; x < size; x++)
+    // {
+    //     for (int y = x; y < size; y++)
+    //     {
+    //         int sum = 0;
+    //         for (int z = x; z < y + 1; z++)
+    //         {
+    //             sum += arr[z];
+    //         }
+    //         maxSum = max(maxSum, sum);
+    //     }
+    // }
+
+    // Cumulative sum approach ,,,,,,,,,,,,,,time comp=O[n^2]
+
+    int cumSum[size + 1];
+    cumSum[0] = 0;
+    for (int i = 1; i < size + 1; i++)
     {
-        for (int y = x; y < size; y++)
+        cumSum[i] = cumSum[i - 1] + arr[i - 1];
+    }
+
+    for (int x = 1; x < size + 1; x++)
+    {
+        int sum = 0;
+        for (int y = 0; y < x; y++)
         {
-            int sum = 0;
-            for (int z = x; z < y + 1; z++)
-            {
-                sum += arr[z];
-            }
+            sum = cumSum[x] - cumSum[y];
             maxSum = max(maxSum, sum);
         }
     }
