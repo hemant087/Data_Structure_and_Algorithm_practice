@@ -6,9 +6,11 @@ bool search(string str, int s, int e)
 {
     if (s >= e)
         return true;
+
     if (str[s] != str[e])
         return false;
-    return search(str, e--, s + 1);
+
+    return search(str, s++, e--);
 }
 
 int main()
