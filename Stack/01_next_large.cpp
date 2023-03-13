@@ -14,14 +14,13 @@ int main()
     }
     else if (s.size() > 0 && arr[i] < s.top())
     {
-      v.push_back(arr[i]);
+      v.push_back(s.top());
     }
 
     if (s.size() > 0 && arr[i] < s.top())
     {
-      while (s.size() > 0 && arr[i] <s.top())
+      while (s.size() > 0 && arr[i] <= s.top())
       {
-        cout<<arr[i]<<"  ";
         s.pop();
       }
       if (s.size() == 0)
@@ -32,7 +31,6 @@ int main()
       {
         v.push_back(s.top());
       }
-      s.push(arr[i]);
     }
   }
 
